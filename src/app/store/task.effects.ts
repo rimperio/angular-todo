@@ -2,20 +2,20 @@ import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { tap, withLatestFrom, switchMap, of } from 'rxjs';
 import { Store } from '@ngrx/store';
-import { add, check, clear, init, remove, set } from './task.actions';
-import { Data } from './task.models';
+import taskActions from './task.actions';
+import { Tasks } from './task.models';
 
 
 @Injectable()
 export class taskEffects {
   loadTasks = createEffect(() =>
     this.actions$.pipe(
-      ofType(init),
+      ofType(taskActions.init),
       switchMap(() => {
-        const data = localStorage.getItem('data');
+        const data = localStorage.getItem('todo');
         return data
-          ? of(set(JSON.parse(data)))
-          : of(set({ counter: 0, tasks: [] }));
+          ? of(taskActions.set(JSON.parse(data)))
+          : of(taskActions.set({ counter: 0, tasks: [] }));
       })
     )
   );
@@ -23,14 +23,14 @@ export class taskEffects {
   saveTasks = createEffect(
     () =>
       this.actions$.pipe(
-        ofType(add, remove, check, clear),
-        withLatestFrom(this.store.select('data')),
-        tap(([_, data]) => localStorage.setItem('data', JSON.stringify(data)))
+        ofType(taskActions.add, taskActions.remove, taskActions.check, taskActions.clear),
+        withLatestFrom(this.store.select('todo')),
+        tap(([_, data]) => localStorage.setItem('todo', JSON.stringify(data)))
       ),
     { dispatch: false }
   );
   constructor(
     private actions$: Actions,
-    private store: Store<{ data: Data }>
+    private store: Store<{ todo: Tasks }>
   ) {}
 }

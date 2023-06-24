@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable, combineLatest, map, of, switchMap } from 'rxjs';
-import { clear } from 'src/app/store/task.actions';
-import { Data, taskData } from 'src/app/store/task.models';
+import taskActions from 'src/app/store/task.actions';
+import { Tasks, task } from 'src/app/store/task.models';
 import {
   selectActiveTasks,
   selectCheckedTasks,
@@ -17,17 +17,18 @@ import {
 })
 export class ToDoListComponent {
   tasks$!: Observable<{
-    array: taskData[];
+    array: task[];
     active: number;
     completed: number;
   }>;
-  constructor(private route: Router, private store: Store<{ data: Data }>) {
+  constructor(private route: Router, private store: Store<{ todo: Tasks }>) {
     this.combineStreams(this.filter());
   }
 
   clearCompleted() {
-    this.store.dispatch(clear());
+    this.store.dispatch(taskActions.clear());
   }
+
   private filter() {
     switch (this.route.routerState.snapshot.url) {
       case '/active':

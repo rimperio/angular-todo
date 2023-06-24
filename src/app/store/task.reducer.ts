@@ -1,12 +1,12 @@
 import { createReducer, on } from '@ngrx/store';
-import { add, check, clear, remove, set } from './task.actions';
-import { Data } from './task.models';
+import taskActions from './task.actions';
+import { Tasks } from './task.models';
 
 
-const initialState: Data = { counter: 0, tasks: [] };
+const initialState: Tasks = { counter: 0, tasks: [] };
 export const taskReducer = createReducer(
   initialState,
-  on(add, (state, action) => {
+  on(taskActions.add, (state, action) => {
     return {
       counter: state.counter + 1,
       tasks: [
@@ -19,7 +19,7 @@ export const taskReducer = createReducer(
       ],
     };
   }),
-  on(remove, (state, action) => {
+  on(taskActions.remove, (state, action) => {
     const filtered = state.tasks.filter((task) => task.id !== action.id);
     return filtered.length
       ? { counter: state.counter, tasks: filtered }
@@ -28,16 +28,16 @@ export const taskReducer = createReducer(
           tasks: [],
         };
   }),
-  on(check, (state, action) => {
+  on(taskActions.check, (state, action) => {
     const updated = state.tasks.map((task) =>
       task.id === action.id ? { ...task, checked: !task.checked } : task
     );
     return { counter: state.counter, tasks: updated };
   }),
-  on(set, (_, action) => {
+  on(taskActions.set, (_, action) => {
     return { counter: action.counter, tasks: action.tasks };
   }),
-  on(clear, (state, _) => {
+  on(taskActions.clear, (state, _) => {
     const active = state.tasks.filter((task) => !task.checked);
     return active.length > 0
       ? { counter: state.counter, tasks: active }

@@ -26,7 +26,7 @@ import { taskEffects } from './store/task.effects';
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    StoreModule.forRoot({ data: taskReducer }),
+    StoreModule.forRoot({ todo: taskReducer }),
     EffectsModule.forRoot([taskEffects]),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() })
   ],
