@@ -1,0 +1,6 @@
+<div class="wrapper p-3 mx-auto">
+    <app-add-to-do></app-add-to-do>
+    <div class="card p-3 mt-5" *ngIf="counter$ | async">
+      <router-outlet></router-outlet>
+    </div>
+  </div>

@@ -1,0 +1,10 @@
+<form class="input-group flex-nowrap" [formGroup]="taskForm" (ngSubmit)="submit()">
+    <div class="form-floating">
+      <input class="form-control" type="text" name="task" id="task" placeholder="Add new task" formControlName="task"
+        autocomplete="off" />
+      <label for="task">Add new task</label>
+    </div>
+    <button class="btn btn-secondary px-3" type="submit" [disabled]="!taskForm.valid">
+      <i class="bi bi-plus-lg"></i>
+    </button>
+  </form>

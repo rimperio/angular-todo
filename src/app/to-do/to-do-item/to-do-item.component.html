@@ -1,0 +1,21 @@
+<div class="d-flex align-items-center" *ngIf="task$ | async as task">
+    <input
+      class="btn-check"
+      type="checkbox"
+      name=""
+      id="task-{{ task.id }}"
+      [checked]="task.checked"
+      (click)="checkTask()"
+    />
+    <label class="btn btn-outline-success me-3" for="task-{{ task.id }}"
+      ><i class="bi bi-check-lg"></i
+    ></label>
+    <p class="info m-0">{{ task.task }}</p>
+    <button
+      class="btn btn-outline-danger ms-auto"
+      type="button"
+      (click)="removeTask()"
+    >
+      <i class="bi bi-trash3"></i>
+    </button>
+  </div>
