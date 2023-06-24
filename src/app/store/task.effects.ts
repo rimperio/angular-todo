@@ -5,9 +5,9 @@ import { Store } from '@ngrx/store';
 import taskActions from './task.actions';
 import { Tasks } from './task.models';
 
-
 @Injectable()
 export class taskEffects {
+
   loadTasks = createEffect(() =>
     this.actions$.pipe(
       ofType(taskActions.init),
@@ -20,17 +20,18 @@ export class taskEffects {
     )
   );
 
-  saveTasks = createEffect(
-    () =>
-      this.actions$.pipe(
-        ofType(taskActions.add, taskActions.remove, taskActions.check, taskActions.clear),
-        withLatestFrom(this.store.select('todo')),
-        tap(([_, data]) => localStorage.setItem('todo', JSON.stringify(data)))
-      ),
+  saveTasks = createEffect(() =>
+    this.actions$.pipe(
+      ofType(taskActions.add, taskActions.remove, taskActions.check, taskActions.clear),
+      withLatestFrom(this.store.select('todo')),
+      tap(([_, data]) => localStorage.setItem('todo', JSON.stringify(data)))
+    ),
     { dispatch: false }
   );
+
   constructor(
     private actions$: Actions,
     private store: Store<{ todo: Tasks }>
   ) {}
+
 }
