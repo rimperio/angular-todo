@@ -1,0 +1,7 @@
+div:has(input:checked) .info {
+    text-decoration: line-through;
+    color: rgb(160, 160, 160);
+  }
+  .hidden {
+    display: none;
+  }
