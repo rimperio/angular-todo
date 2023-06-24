@@ -17,7 +17,7 @@ import {
 })
 export class ToDoListComponent {
   tasks$!: Observable<{
-    array: task[];
+    list: task[];
     active: number;
     completed: number;
   }>;
@@ -36,7 +36,6 @@ export class ToDoListComponent {
       case '/completed':
         return selectCheckedTasks;
       case '/all':
-        return selectTasks;
       default:
         return selectTasks;
     }
@@ -48,7 +47,7 @@ export class ToDoListComponent {
       this.tasksStatus(selectActiveTasks),
       this.tasksStatus(selectCheckedTasks),
     ]).pipe(
-      map(([array, active, completed]) => ({ array, active, completed }))
+      map(([list, active, completed]) => ({ list, active, completed }))
     );
   }
 
