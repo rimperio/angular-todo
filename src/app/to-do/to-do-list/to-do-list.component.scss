@@ -1,27 +1,4 @@
 div {
-<<<<<<< HEAD
-    margin-bottom: 1rem;
-  }
-  div:last-of-type {
-    margin-bottom: 0;
-  }
-  .d-flex {
-    gap: 1rem;
-  }
-  .active {
-    color: white;
-    background-color: #6c757d;
-  }
-  
-  @media screen and (max-width: 576px) {
-    .menu {
-      position: absolute;
-      left: 0;
-      bottom: -4rem;
-      width: 100%;
-    }
-  }
-=======
   margin-bottom: 1rem;
 }
 
@@ -46,4 +23,3 @@ div:last-of-type {
     width: 100%;
   }
 }
->>>>>>> refactor

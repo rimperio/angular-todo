@@ -23,10 +23,7 @@
     "@ngrx/store-devtools": "^16.0.1",
     "bootstrap": "^5.3.0",
     "bootstrap-icons": "^1.10.5",
-<<<<<<< HEAD
-=======
     "immer": "^10.0.2",
->>>>>>> refactor
     "ngrx": "^0.0.1-security",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
@@ -45,8 +42,4 @@
     "karma-jasmine-html-reporter": "~2.1.0",
     "typescript": "~5.1.3"
   }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> refactor
