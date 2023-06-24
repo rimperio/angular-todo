@@ -1,7 +1,17 @@
 div:has(input:checked) .info {
+<<<<<<< HEAD
     text-decoration: line-through;
     color: rgb(160, 160, 160);
   }
   .hidden {
     display: none;
   }
+=======
+  text-decoration: line-through;
+  color: rgb(160, 160, 160);
+}
+
+.hidden {
+  display: none;
+}
+>>>>>>> refactor

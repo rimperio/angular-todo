@@ -1,4 +1,5 @@
 input {
+<<<<<<< HEAD
     border-right: none;
     border-color: #c4c8cb;
   }
@@ -9,3 +10,17 @@ input {
   input.ng-valid {
     border-color: #198754;
   }
+=======
+  border-right: none;
+  border-color: #c4c8cb;
+}
+
+input:focus {
+  border-color: #6c757d;
+  box-shadow: none;
+}
+
+input.ng-valid {
+  border-color: #198754;
+}
+>>>>>>> refactor
